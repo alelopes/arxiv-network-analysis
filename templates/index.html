@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Shortest Path Between Collaborators in Arxiv</h1>
+    <form method = "POST">
+        <label for="fauthor">Author #1:</label>
+        <input type="text" id="fauthor" name="fauthor"><br><br>
+        <label for="sauthor">Author #2:</label>
+        <input type="text" id="sauthor" name="sauthor"><br><br>
+        <input type="submit" value="Submit"> 
+
+        <br><br>
+
+        {% if sequencia %}
+          {% if is_valid_path %}
+            <p>The shortest path between these two author's is:</p>
+          {% endif %}
+          {{ sequencia }}
+        {% endif %}
+
+        {% if search %}
+          <br><br>
+          <label>Do you want to search for similar author name? Write the names in the box below:</label><br><br>
+          <label for="search_bt">Search Name:</label>
+          <!-- <input type="text" id="search_bt" name="search_bt" action="{{url_for('search')}}"><br><br> -->
+          <input type="text" id="search_bt" name="search_bt"><br><br>
+          <input type="submit" value="Submit"> 
+
+        {% endif %}
+
+        </form>
+
+        {% if closest_names %}
+          <p>The three closest names found in arxiv to {{search_name}} are:</p>
+          {{ closest_names }}
+          <p>Try again with one of these names!</p>
+        {% endif %}
+
+        <br><br>
+
+</body>
+</html>
